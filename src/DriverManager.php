@@ -269,6 +269,7 @@ final class DriverManager
      */
     private static function parseDatabaseUrl(array $params): array
     {
+        dump(['1', $params]);
         if (! isset($params['url'])) {
             return $params;
         }
@@ -277,7 +278,9 @@ final class DriverManager
         $url = preg_replace('#^((?:pdo_)?sqlite3?):///#', '$1://localhost/', $params['url']);
         assert(is_string($url));
 
+        dump(['2', $url]);
         $url = parse_url($url);
+        dump(['3', $url]);
 
         if ($url === false) {
             throw new Exception('Malformed parameter "url".');
