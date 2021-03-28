@@ -426,6 +426,7 @@ final class DriverManager
      */
     private static function parseDatabaseUrlScheme(?string $scheme, array $params): array
     {
+        dump('a', $scheme, $params);
         if ($scheme !== null) {
             // The requested driver from the URL scheme takes precedence
             // over the default custom driver from the connection parameters (if any).
@@ -445,6 +446,7 @@ final class DriverManager
 
         // If a schemeless connection URL is given, we require a default driver or default custom driver
         // as connection parameter.
+        dump('b', $scheme, $params);
         if (! isset($params['driverClass']) && ! isset($params['driver'])) {
             throw Exception::driverRequired($params['url']);
         }
